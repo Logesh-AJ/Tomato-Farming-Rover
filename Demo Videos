@@ -1,19 +1,20 @@
-# 🎥 Project Demo Videos
-
----
-
-## 🚜 Rover System Demo
+🎥 Project Demo Videos
+🚜 Rover System Demo
 
 Demonstration of the AI-powered agriculture rover with ESP32-CAM streaming, sensor integration, and real-time system operation.
 
 🔗 https://youtu.be/SywYewA_Va4?si=w6T3ef0knz9LKztV
 
----
-
-## 🍅 Tomato Detection Demo
+🍅 Tomato Detection Demo
 
 Real-time tomato ripeness detection using YOLOv8 with bounding box predictions and classification.
 
 🔗 https://youtube.com/shorts/9Cp_U19A2y8?feature=share
 
----
+🌿 Sugarcane Disease Detection (Drone-Based)
+
+Real-time aerial disease detection using YOLOv8 on Raspberry Pi with drone-captured imagery.
+
+🔗 https://youtu.be/1pLHz0OlPNg
+
+🔗 https://youtu.be/YaMoYmBTEOo
