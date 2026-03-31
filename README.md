@@ -194,6 +194,5 @@ This work is published in IEEE conference (ICEARS 2026).
 ## 👤 Author
 
 **Logesh A J**
-AI | Computer Vision | Embedded Systems
 
 ---
