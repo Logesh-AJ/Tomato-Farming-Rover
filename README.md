@@ -19,146 +19,101 @@ AI-powered rover system for real-time tomato ripeness classification and disease
 
 * 🍅 Tomato ripeness detection (Ripe / Unripe classification)
 * 🌿 Multi-class plant disease detection
-* 📡 Live image streaming using ESP32-CAM
-* 🌡️ Environmental monitoring (soil moisture, humidity)
-* ⚡ Real-time inference using YOLOv8 models
-* 🔁 Bidirectional communication for control and monitoring
+* 📡 Live video streaming using ESP32-CAM
+* 🌡️ Environmental monitoring using sensors
+* ⚡ Real-time inference using YOLOv8
+* 🔁 Supports manual control and future autonomous extension
 
 ---
 
-## 🏗️ System Architecture
+## 📡 ESP32-CAM Setup & Connectivity
 
-The system consists of a rover equipped with sensors and an ESP32-CAM module that captures images and streams them over Wi-Fi to a processing unit.
+The ESP32-CAM is configured in **Wi-Fi Access Point (Hotspot) mode** to enable direct communication with the processing system.
 
-* Image data → processed using YOLOv8 models
-* Sensor data → used for irrigation insights
-* Results → sent back for monitoring and control
+### 🔧 Configuration
+
+* ESP32-CAM creates a hotspot
+* Example:
+
+  * SSID: `ESP32-CAM`
+  * Password: `12345678`
+
+### 📶 Connection Steps
+
+1. Power ON the ESP32-CAM
+2. Connect your laptop to the ESP32-CAM Wi-Fi network
+3. Ensure the camera server is running
+4. Access the video stream using:
+
+```bash
+http://192.168.4.1:81/stream
+```
 
 ---
 
-## ⚙️ Workflow
+## ⚙️ System Workflow
 
-1. **Data Acquisition**
+1. **Image Capture**
 
-   * Images captured using ESP32-CAM
-   * Environmental data collected from sensors
+   * ESP32-CAM captures real-time images
 
 2. **Data Transmission**
 
-   * Live streaming via Wi-Fi to processing system
+   * Stream sent over Wi-Fi to processing system
 
 3. **AI Processing**
 
    * YOLOv8 Model 1 → Tomato ripeness detection
    * YOLOv8 Model 2 → Disease detection
 
-4. **Output & Decision Making**
+4. **Output**
 
-   * Results displayed in real-time
-   * Enables data-driven farming decisions
-
----
-
-## 📡 ESP32-CAM Setup & Connectivity
-
-The ESP32-CAM module is configured to operate in Wi-Fi Access Point (Hotspot) mode to enable direct communication with the processing system.
-
-### 🔧 Configuration
-
-* The ESP32-CAM creates a Wi-Fi hotspot (SSID configured in the firmware)
-* Example:
-
-  * SSID: `ESP32-CAM`
-  * Password: `12345678`
-
-### 📶 Connection Process
-
-1. Power on the ESP32-CAM module
-2. Connect the laptop to the ESP32-CAM Wi-Fi hotspot
-3. The ESP32-CAM starts a local server (HTTP stream)
-4. The video stream is accessed using the IP address and port
-
-### 🌐 Stream Access
-
-The camera stream is accessed in Python using:
-
-```python
-http://192.168.4.1:81/stream
-```
-
-* `192.168.4.1` → Default IP of ESP32-CAM in AP mode
-* `81` → Port used for video streaming
-
-### 🧠 Integration with Python
-
-* OpenCV is used to capture frames from the stream
-* Frames are processed using YOLOv8 models for:
-
-  * Tomato ripeness detection
-  * Disease classification
-
-### ⚠️ Important Notes
-
-* The ESP32-CAM hotspot must be ON before running the Python script
-* The system will not connect if:
-
-  * Wi-Fi is not connected to ESP32-CAM
-  * Incorrect IP/port is used
-  * Camera server is not running
+   * Real-time bounding box predictions
+   * Decision support for farming operations
 
 ---
 
+## 🎥 Demo Video
 
-## 📊 Model Performance
-
-### 🍅 Ripeness Detection
-
-* Precision: ~95% (Ripe), ~93% (Unripe)
-
-### 🌿 Disease Detection
-
-* Precision: >94% for most disease classes
-
-*(Based on experimental evaluation results)*
-
----
-
-## 📸 Results
-
-![Detection Output](demo_images/sample1.png)
-
----
-
-## 🎥 Demo
-
-[▶ Watch Full Demo](https://youtube.com/your-link)
+[▶ Watch Rover System Demo](https://youtu.be/SywYewA_Va4?si=rCqZMHQAIErBjxgq)
 
 ---
 
 ## ⚡ How to Run
 
-1. Clone the repository
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/yolov8-agri-rover-tomato-detection.git
+git clone https://github.com/Logesh-AJ/Tomato-Farming-Rover.git
 ```
 
-2. Navigate to project directory
+### 2. Navigate to project directory
 
 ```bash
-cd yolov8-agri-rover-tomato-detection
+cd Tomato-Farming-Rover
 ```
 
-3. Install dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Run detection
+### 4. Connect to ESP32-CAM
+
+* Turn ON ESP32-CAM
+* Connect to its Wi-Fi hotspot
+
+### 5. Run live detection (ESP32 stream)
 
 ```bash
-python src/main.py
+python src/main_stream.py
+```
+
+### 6. Run local webcam detection (optional)
+
+```bash
+python src/main_local.py
 ```
 
 ---
@@ -166,7 +121,8 @@ python src/main.py
 ## ⚙️ System Requirements
 
 * Python >= 3.8
-* Webcam / ESP32-CAM
+* Webcam (for local testing)
+* ESP32-CAM module (for live rover stream)
 * Wi-Fi connectivity
 * OS: Windows / Linux / macOS
 
@@ -177,50 +133,60 @@ python src/main.py
 * ultralytics
 * opencv-python
 * numpy
+* requests
+* Pillow
 
 ---
 
 ## 📁 Project Structure
 
 ```bash
-yolov8-agri-rover-tomato-detection/
+Tomato-Farming-Rover/
  ├── src/
- │    ├── main.py
- │    ├── detect.py
- │    └── utils.py
- ├── models/
- │    ├── ripeness_model.pt
- │    └── disease_model.pt
+ │    ├── camera/
+ │    ├── training/
+ │    ├── main_stream.py
+ │    └── main_local.py
+ ├── model/
  ├── demo_images/
- ├── demo_video/
+ ├── research_paper/
+ ├── Demo Videos
  ├── README.md
  └── requirements.txt
 ```
 
 ---
 
-## 🚧 Future Improvements
+## 📄 Research Paper
 
-* Onboard deployment using NVIDIA Jetson Nano
-* Autonomous navigation system
-* Robotic arm for automated harvesting
-* Precision irrigation and pesticide control
-* Fully autonomous farming system
+This work is published in IEEE conference (ICEARS 2026).
+
+👉 View details:
+`research_paper/paper_link.md`
 
 ---
 
 ## 📌 Applications
 
-* Smart agriculture
-* Precision farming
+* Precision agriculture
+* Smart farming systems
 * Crop health monitoring
-* Automated irrigation systems
+* Automated irrigation decision support
+
+---
+
+## 🚧 Future Improvements
+
+* Autonomous navigation system
+* Edge deployment (Jetson Nano / Raspberry Pi)
+* Robotic harvesting integration
+* Full farm automation system
 
 ---
 
 ## 👤 Author
 
 **Logesh A J**
-Electronics & Communication Engineering | AI & Embedded Systems
+AI | Computer Vision | Embedded Systems
 
 ---
