@@ -13,7 +13,7 @@ Real-time tomato ripeness detection using YOLOv8 with bounding box predictions a
 
 🌿 Sugarcane Disease Detection (Drone-Based)
 
-Real-time aerial disease detection using YOLOv8 on Raspberry Pi with drone-captured imagery.
+Real-time disease detection using YOLOv8 from the esp-cam present in the rover.
 
 🔗 https://youtu.be/1pLHz0OlPNg
 
