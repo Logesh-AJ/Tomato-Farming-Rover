@@ -73,11 +73,18 @@ http://192.168.4.1:81/stream
 
 ---
 
-## 🎥 Demo Video
+## 🎥 Demo Videos
+
+### 🚜 Rover System Demo
 
 [▶ Watch Rover System Demo](https://youtu.be/SywYewA_Va4?si=rCqZMHQAIErBjxgq)
 
 ---
+
+### 🍅 Tomato Detection Demo
+
+[▶ Watch Tomato Detection Demo](https://youtube.com/shorts/9Cp_U19A2y8?feature=share)
+
 
 ## ⚡ How to Run
 
