@@ -59,6 +59,56 @@ The system consists of a rover equipped with sensors and an ESP32-CAM module tha
 
 ---
 
+## 📡 ESP32-CAM Setup & Connectivity
+
+The ESP32-CAM module is configured to operate in Wi-Fi Access Point (Hotspot) mode to enable direct communication with the processing system.
+
+### 🔧 Configuration
+
+* The ESP32-CAM creates a Wi-Fi hotspot (SSID configured in the firmware)
+* Example:
+
+  * SSID: `ESP32-CAM`
+  * Password: `12345678`
+
+### 📶 Connection Process
+
+1. Power on the ESP32-CAM module
+2. Connect the laptop to the ESP32-CAM Wi-Fi hotspot
+3. The ESP32-CAM starts a local server (HTTP stream)
+4. The video stream is accessed using the IP address and port
+
+### 🌐 Stream Access
+
+The camera stream is accessed in Python using:
+
+```python
+http://192.168.4.1:81/stream
+```
+
+* `192.168.4.1` → Default IP of ESP32-CAM in AP mode
+* `81` → Port used for video streaming
+
+### 🧠 Integration with Python
+
+* OpenCV is used to capture frames from the stream
+* Frames are processed using YOLOv8 models for:
+
+  * Tomato ripeness detection
+  * Disease classification
+
+### ⚠️ Important Notes
+
+* The ESP32-CAM hotspot must be ON before running the Python script
+* The system will not connect if:
+
+  * Wi-Fi is not connected to ESP32-CAM
+  * Incorrect IP/port is used
+  * Camera server is not running
+
+---
+
+
 ## 📊 Model Performance
 
 ### 🍅 Ripeness Detection
