@@ -87,7 +87,7 @@ http://192.168.4.1:81/stream
 
 ### 🍅 Tomato Disease Detection 
 
-[▶ Watch Tomato Disease Detection Demo]([https://youtube.com/shorts/9Cp_U19A2y8?feature=share](https://youtu.be/YaMoYmBTEOo))
+[▶ Watch Tomato Disease Detection Demo](https://youtu.be/YaMoYmBTEOo))
 
 [▶ Watch Tomato Disease Detection Demo](https://youtu.be/1pLHz0OlPNg))
 
