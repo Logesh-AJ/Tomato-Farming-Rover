@@ -174,7 +174,7 @@ Tomato-Farming-Rover/
 This work is published in IEEE conference (ICEARS 2026).
 
 👉 View details:
-`research_paper/paper_link.md`
+[paper_link](https://ieeexplore.ieee.org/document/11416660)
 
 ---
 
